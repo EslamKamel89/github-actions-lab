@@ -1,6 +1,8 @@
 name: first-workflow
-on: workflow_dispatch
-jobs: 
+on:
+  workflow_dispatch:
+  push:
+jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
@@ -10,4 +12,22 @@ jobs:
         run: uname -a
       - name: print goodbye
         run: echo "Done - good bye"
-  
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: inspect files
+        run: ls -la
+      - name: Run validation
+        run: python3 test_app.py
+
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect Runner
+        run: |
+          echo "Runner information: "
+          uname -a
+      - name: check python
+        run: python3 --version
