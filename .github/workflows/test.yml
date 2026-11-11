@@ -1,0 +1,16 @@
+name: push-workflow
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v7
+      - name: install node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 18
+      - name: check node
+        run: node --version
