@@ -2,6 +2,8 @@ name: push-workflow
 on:
   workflow_dispatch:
   push:
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,6 +13,10 @@ jobs:
       - name: install node
         uses: actions/setup-node@v7
         with:
-          node-version: 18
+          node-version: 24
       - name: check node
         run: node --version
+      - name: install dependencies
+        run: npm install
+      - name: run tests
+        run: npm test
