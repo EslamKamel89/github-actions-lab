@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: print greeting
         run: echo "hello world"
+      - name: print environment
+        run: uname -a
       - name: print goodbye
         run: echo "Done - good bye"
   
