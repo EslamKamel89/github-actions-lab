@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
+      - name: create temp file
+        run: echo "hello world" > temp.txt
+      - name: read temp file
+        run: cat temp.txt
       - name: inspect files
         run: ls -la
       - name: Run validation
