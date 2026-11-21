@@ -1,0 +1,21 @@
+name: output-information
+on:
+    workflow_dispatch:
+    push:
+permissions:
+    contents: read
+jobs:
+    info:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print workflow information
+              env:
+                  EVENT_NAME: ${{ github.event_name }}
+                  REPOSITORY: ${{ github.repository }}
+                  GIT_REF: ${{ github.ref }}
+                  COMMIT_SHA: ${{ github.sha }}
+              run: |
+                  echo "Event: $EVENT_NAME"
+                  echo "Repository: $REPOSITORY"
+                  echo "Ref: $GIT_REF"
+                  echo "Commit: $COMMIT_SHA"

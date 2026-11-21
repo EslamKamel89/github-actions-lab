@@ -34,5 +34,22 @@ jobs:
         run: npm install
       - name: build project
         run: npm run build
+      - name: Context data
+        run: |
+          echo "Event name ${{ github.event_name }}"
+          echo "Repository ${{ github.repository }}"
+          echo "Ref ${{ github.ref }}"
+          echo "Actor ${{ github.actor }}"
+          echo "Workflow ${{ github.workflow }}"
+          echo "Action ${{ github.action }}"
+          echo "Event path ${{ github.event_path }}"
+          echo "SHA ${{ github.sha }}"
+          echo "Ref type ${{ github.ref_type }}"
+          echo "Repository owner ${{ github.repository_owner }}"
+          echo "Run ID ${{ github.run_id }}"
+          echo "Run number ${{ github.run_number }}"
+          echo "Job ${{ github.job }}"
+          echo "Run attempt ${{ github.run_attempt }}"
+          echo "Event json ${{ toJson(github.event) }}"
       - name: simulate deployment
         run: echo "Deploying Project..."
