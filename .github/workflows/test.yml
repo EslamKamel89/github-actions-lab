@@ -20,3 +20,18 @@ jobs:
         run: npm install
       - name: run tests
         run: npm test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v7
+      - name: install node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: install dependencies
+        run: npm install
+      - name: build project
+        run: npm run build
+      - name: simulate deployment
+        run: echo "Deploying Project..."
